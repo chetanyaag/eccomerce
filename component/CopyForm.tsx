@@ -15,7 +15,7 @@ export default function CopyForm(props: {
     const [asin, setAsin] = useState(props.asin)
 
     const handleClick=()=>{
-        navigator.clipboard.writeText("http://my-star.s3.ap-south-1.amazonaws.com/product.html?asin="+asin+"&tag="+props.tag1)
+        navigator.clipboard.writeText("http://paisabacha.in/product?asin="+asin+"&tag="+props.tag1)
       .then(() => {
         alert('Text copied to clipboard');
       })
@@ -36,7 +36,7 @@ export default function CopyForm(props: {
                     <Typography gutterBottom variant="h5" component='div'>
                     Copy the genrated link
                     </Typography>
-                    <TextField style={{ margin: '16px 0' }} InputProps={{ readOnly:true}} label="COPY THE LINK " value={"http://localhost:3000/product?asin="+asin+"&tag="+ props.tag1} variant="outlined" helperText="Press SUCCESS BUTTON TO COPY THE LINK" fullWidth></TextField>
+                    <TextField style={{ margin: '16px 0' }} InputProps={{ readOnly:true}} label="COPY THE LINK " value={"https://https://paisabacha.in/product?asin="+asin+"&tag="+ props.tag1} variant="outlined" helperText="Press SUCCESS BUTTON TO COPY THE LINK" fullWidth></TextField>
                     <div style={{ display: 'flex', justifyContent: 'center',margin: '16px 0' }}>
                     <Stack spacing={2} direction='row'>
                     <Button variant="contained" onClick={handleClick} color={props.data==0? "error":"secondary"}>{props.data==0?"Failed":"Success"}</Button> <Button variant="contained" color="warning" onClick={handleClick2}>Back</Button>
