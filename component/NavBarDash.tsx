@@ -47,8 +47,8 @@ function NavBarDash() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-  const handleLogout =(e) =>{
-    e.preventDefault();
+  const handleLogout =() =>{
+    // e.preventDefault();
     cookies.set('token', '', { path: '/', expires: (new Date(Date.now())) });
     router.push("/login");
   }
