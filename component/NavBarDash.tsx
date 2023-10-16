@@ -17,10 +17,12 @@ import MenuItem from '@mui/material/MenuItem';
 import MoneyIcon from '@mui/icons-material/Money';
 // import AdbIcon from '@mui/icons-material/Adb';
 import Link from 'next/link';
-
+import Cookies from 'universal-cookie';
+import { useRouter } from 'next/router';
 // const pages = ['Create Link', 'Create User'];
-const pages = ['dashboard', 'createUser'];
+const pages = ['dashboard', 'createUser', ];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const logout = "logout";
 // const pageDict ={
 //   "Create User":"createUser",
 //   "Create Link":"dashboard"
@@ -29,7 +31,8 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 function NavBarDash() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
-
+  const cookies = new Cookies();
+  const router = useRouter();
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -44,7 +47,11 @@ function NavBarDash() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-
+  const handleLogout =(e) =>{
+    e.preventDefault();
+    cookies.set('token', '', { path: '/', expires: (new Date(Date.now())) });
+    router.push("/login");
+  }
   return (
     <AppBar  color="secondary">
       <Container maxWidth="xl">
@@ -99,10 +106,14 @@ function NavBarDash() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  
                   <Link href={page} legacyBehavior><Typography textAlign="center">{page}</Typography></Link>
                 </MenuItem>
               ))}
+             <MenuItem key={logout} onClick={handleCloseNavMenu}><Typography textAlign="center" onClick={handleLogout}>{logout}</Typography></MenuItem>
+            
             </Menu>
+
           </Box>
           <MoneyIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
@@ -136,6 +147,11 @@ function NavBarDash() {
               </Button></a>
               </Link>
             ))}
+            <Button
+             key={logout} 
+             onClick={handleLogout}
+             sx={{ my: 2, color: 'white', display: 'block' } } 
+             >Logout</Button>
           </Box>
 
 
