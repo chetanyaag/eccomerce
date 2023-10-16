@@ -17,11 +17,14 @@ const ProductPage = () => {
   // const [name, setName] = useState('')
 
   const router = useRouter()
-  const asin = router.query.asin
+  const {asin} = router.query
   const tag = router.query.tag
 
   useEffect(() => {
-
+    const urlParams = new URLSearchParams(window.location.search);
+    const asin = urlParams.get('asin');
+    const tag = urlParams.get('tag')
+    // console.log("\n\n"+window.location.search +"\n");
     fetch(Apiurl+"getProductData?asin="+ asin).then((response) => response.json())
       .then((json) => {
         if (json['status'] == 200) {
