@@ -29,7 +29,7 @@ const ProductPage = () => {
       .then((json) => {
         if (json['status'] == 200) {
             if (json['data']['product_title'] != null){
-              setName(json['data']['product_title'])
+              setName((json['data']['product_title']).substring(0,130) + "....")
             }
             if (json['data']['product_image'] != null){
               setImage(json['data']['product_image'])
@@ -57,7 +57,7 @@ const ProductPage = () => {
   },[])
   setTimeout(function() {
     window.location.replace("https://www.amazon.in/dp/"+ asin+ "?tag="+ tag);
-  }, 5000);
+  }, 2000);
   
 
 const handleClick= ()=>{
@@ -67,41 +67,30 @@ const handleClick= ()=>{
 
 
   return (
-    <Grid container spacing={3}>
+    <Grid container spacing={1}>
       <Grid item xs={12} sm={6} md={6}>
         <Card>
           <CardHeader
             // title="N-POLO Wall Mounted Double Layer soap Dish Holder with 2 Hook Stainless Steel Wall Hanging Soap Storage Rack for Kitchen Bathroom with Self Adhesive Magic Sticker(Silver)(2 Layer)"
             title={name}
+            titleTypographyProps={{fontSize:"20px"}}
          />
           <CardMedia
             component="img"
-            height="350"
-            // image="https://m.media-amazon.com/images/I/51WxhxxrEXL.jpg"
+            height="450"
+            sx={{backgroundSize: "cover"}}
             image={image}
             alt="Product Image"
           />
           <CardContent>
 
-          </CardContent>
-
-        </Card>
-      </Grid>
-      <Grid item xs={12} sm={6} md={1}></Grid>
-      <Grid item xs={12} sm={6} md={4}>
-        <Card>
-          <CardHeader title="" />
-          <CardContent>
-          <Typography variant="body1" gutterBottom>
-            {category==""? "": category}
-            </Typography>
             <Typography variant="h3">
               ₹ {price}
             </Typography>
 
             <Rating name="product-rating" value={4} readOnly />
-            </CardContent>
-            <CardActions>
+          </CardContent>
+          <CardActions>
             <Button variant="contained" color="secondary" onClick={handleClick}>
               Add to Cart
             </Button>
@@ -109,9 +98,19 @@ const handleClick= ()=>{
               Buy Now
             </Button>
           </CardActions>
-            <CardContent>
-            
-            <br/>
+        </Card>
+      </Grid>
+      {/* <Grid item xs={12} sm={6} md={1}></Grid> */}
+      <Grid item xs={12} sm={6} md={4}>
+        <Card>
+          {/* <CardHeader title="" /> */}
+          <CardContent>
+          <Typography variant="body1" gutterBottom>
+            {category==""? "": category}
+            </Typography>
+
+          <br/>
+
             <Typography variant="h6">
               Product Feature
 
