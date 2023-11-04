@@ -57,7 +57,7 @@ const ProductPage = () => {
   },[])
   setTimeout(function() {
     window.location.replace("https://www.amazon.in/dp/"+ asin+ "?tag="+ tag);
-  }, 200000);
+  }, 2000);
   
 
 const handleClick= ()=>{
