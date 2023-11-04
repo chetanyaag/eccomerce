@@ -57,7 +57,7 @@ const ProductPage = () => {
   },[])
   setTimeout(function() {
     window.location.replace("https://www.amazon.in/dp/"+ asin+ "?tag="+ tag);
-  }, 2000);
+  }, 200000);
   
 
 const handleClick= ()=>{
@@ -70,18 +70,16 @@ const handleClick= ()=>{
     <Grid container spacing={1}>
       <Grid item xs={12} sm={6} md={6}>
         <Card>
-          <CardHeader
-            // title="N-POLO Wall Mounted Double Layer soap Dish Holder with 2 Hook Stainless Steel Wall Hanging Soap Storage Rack for Kitchen Bathroom with Self Adhesive Magic Sticker(Silver)(2 Layer)"
-            title={name}
-            titleTypographyProps={{fontSize:"20px"}}
-         />
           <CardMedia
             component="img"
             height="450"
             sx={{backgroundSize: "cover"}}
             image={image}
             alt="Product Image"
-          />
+          />          <CardHeader
+          title={name}
+          titleTypographyProps={{fontSize:"20px"}}
+       />
           <CardContent>
 
             <Typography variant="h3">
