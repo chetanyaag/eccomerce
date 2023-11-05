@@ -22,7 +22,16 @@ export default function UserTable() {
             }
 
         })
-    })
+        const intervalId = setInterval(() => {
+            // Your code to be executed every 2 seconds goes here
+            console.log('This code runs every 2 seconds');
+          }, 2000);
+      
+          // Clean up the interval when the component unmounts
+          return () => {
+            clearInterval(intervalId);
+          };
+    }, [])
     
 
     const onClickEdit=(event:any, index:any)=>{
