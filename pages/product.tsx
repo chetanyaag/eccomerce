@@ -6,7 +6,7 @@ export default function product() {
     return (<Box>
 <ResponsiveAppBar></ResponsiveAppBar>
 
-<Box m={4} marginLeft={10} marginTop={20}>
+<Box  marginLeft={3} marginTop={20}>
 
 <ProductPage></ProductPage>
 
